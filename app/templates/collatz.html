@@ -1,0 +1,15 @@
+<h2>Collatz Conjecture</h2>
+<form action="" method="post" role="form">
+<div class="form-group">
+  <label for="limit">How many numbers would you like to calculate?</label>
+  <input type="text" class="form-control" id="limit" name="limit">
+</div>
+<button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% if steps %}
+<h2>Results</h2>
+    {% for number in steps %}
+    For the number {{number[0]}} it took {{number[1]}} steps<br>
+    {% endfor%}
+{% endif %}

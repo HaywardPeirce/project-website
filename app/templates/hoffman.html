@@ -1,0 +1,13 @@
+<h2>Hoffman Coding</h2>
+<form action="" method="post" role="form">
+<div class="form-group">
+  <label for="limit">What string would you like to encode?</label>
+  <input type="text" class="form-control" id="stringToEncode" name="string">
+</div>
+<button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% if encodedString %}
+<h2>Results</h2>
+    {{encodedString}}
+{% endif %}

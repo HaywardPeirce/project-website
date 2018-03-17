@@ -1,0 +1,23 @@
+<h2>Fizzbuzz</h2>
+<form action="" method="post" role="form">
+<div class="form-group">
+  <label for="limit">Which method would you like to use to calculate Fizzbuzz?:</label>
+  <select name="method"  class="form-control">
+    <option value="ifelse">If/Else Method</option>
+    <option value="concat">String Concatenantion</option>
+    <option value="recursive">Recursive</option>
+  </select>
+  <label for="limit">How many numbers would you like to calculate fizzbuzz for?:</label>
+  <input type="number" class="form-control" id="limit" name="limit">
+</div>
+<button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% if results %}
+<h2>Results</h2>
+  Results took {{time}} milliseconds to calculate.<br>
+  {% for result in results %}
+    {{result}}<br>
+  {% endfor%}
+{% endif %}
+

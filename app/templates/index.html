@@ -1,0 +1,37 @@
+<!-- index.html-->
+
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Projects</h1>
+  <p class="lead">Try our a number of Hayward's hobby coding projects</p>
+</div>
+
+<div class="container">
+  <input type="button" class="btn" onclick="location.href='/?project=collatz';" value="Collatz Conjecture" />
+  <input type="button" class="btn" onclick="location.href='/?project=hoffman';" value="Hoffman Coding" />
+  <!-- input type="button" class="btn" onclick="location.href='/?project=woodcalc';" value="Wood Length Calculator" /-->
+  <input type="button" class="btn" onclick="location.href='/?project=fizzbuzz';" value="Fizzbuzz" />
+</div>
+
+{% if project %}
+  <div class="projectForm">
+    
+    {% if project == "collatz" %}
+      {% include "collatz.html" %}
+    {% elif project == "hoffman" %}
+      {% include "hoffman.html" %}
+    {% elif project == "woodcalc" %}
+      {% include "woodcalc.html" %}
+    {% elif project == "fizzbuzz" %}
+      {% include "fizzbuzz.html" %}
+    {% endif %}
+    
+  </div>
+{% else %}
+<div class="noProject"><br>No project has yet been selected</div>
+{% endif %}
+
+
+{% endblock %}
