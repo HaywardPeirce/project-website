@@ -1,4 +1,3 @@
 Flask==0.11.1
-Python==2.7.6
 
 git+git://github.com/HaywardPeirce/random-code.git
