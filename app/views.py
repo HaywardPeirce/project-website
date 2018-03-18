@@ -61,7 +61,7 @@ def project():
             endTime = datetime.now()
             endTime = endTime.microsecond
             
-            print endTime-startTime
+            print(endTime-startTime)
             
             if type(results) is 'list':
                 return render_template("index.html", project = selectedProject, results_list = results, time = (endTime-startTime))
