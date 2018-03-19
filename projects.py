@@ -7,7 +7,7 @@ from collatzConjecture import calculateCollatz
 
 from fizzbuzz import selectMethod
 
-from hoffmanCoding import encode
+#from hoffmanCoding import encode
 
 #from ...random_code import collatzConjecture
 
