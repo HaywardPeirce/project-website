@@ -3,4 +3,5 @@ WTForms==2.1
 xlrd==1.0.0
 six==1.5.2
 requests==2.2.1
-git+git://github.com/HaywardPeirce/random-code.git
+
+git+https://github.com/HaywardPeirce/random-code.git
