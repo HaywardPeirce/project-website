@@ -69,7 +69,7 @@ def checkPMVShips():
     
     #print type(lastCheckTime['sources'][0]['time'])
     
-    print 'timedif: ' + str(tempTime - lastCheckTime['sources'][0]['time'])
+    print('timedif: ' + str(tempTime - lastCheckTime['sources'][0]['time']))
     
     if (tempTime - lastCheckTime['sources'][0]['time']) > 3600:
         
@@ -87,7 +87,7 @@ def checkPilotShips():
     
     lastCheckTime['sources'][1]['time'] = LastCheckTime(lastCheckTime['sources'][1]['file'], lastCheckTime['sources'][1]['time'])
     
-    print 'timedif: ' + str(tempTime - lastCheckTime['sources'][1]['time'])
+    print('timedif: ' + str(tempTime - lastCheckTime['sources'][1]['time']))
     
     if (tempTime - lastCheckTime['sources'][1]['time']) > 3600:
         
@@ -150,7 +150,7 @@ def getPilotFile():
     with open('pilotships.csv', 'rb') as csvfile:
         data = csv.reader(csvfile, delimiter=' ', quotechar='|')
         for row in spamreader:
-            print ', '.join(row)
+            print(', '.join(row))
     
     return data
     
