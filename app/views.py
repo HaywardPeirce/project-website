@@ -82,14 +82,14 @@ def project():
 def list():
     listType = request.args.get('listType')
     
-    print 
-    
     if listType == 'pmvShips':
         listEntries = ships.getPMVShips()
     elif listType == 'pmvShipTypes': 
         listEntries = ships.getPMVShipTypes()
     # elif listType == 'pilotShips': 
     #     listEntries = ships.getPilotShips()
-    else: listEntries = ships.getPMVShips()
+    else: 
+        listType = 'pmvShips'
+        listEntries = ships.getPMVShips()
     
-    return render_template('ships.html', listEntries=listEntries)
+    return render_template('ships.html', listEntries=listEntries, listType=listType)
