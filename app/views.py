@@ -28,7 +28,7 @@ def index():
     
 @app.route('/compsci', methods=['GET','POST'])
 #@app.route('/', methods=['GET','POST'])
-def project():
+def compsciPage():
     
     selectedProject = request.args.get('project')
     
@@ -79,7 +79,7 @@ def project():
     return render_template("compsci.html", project = selectedProject)
     
 @app.route('/ships')
-def list():
+def shipsPage():
     listType = request.args.get('listType')
     
     if listType == 'pmvShips':
@@ -93,3 +93,28 @@ def list():
         listEntries = ships.getPMVShips()
     
     return render_template('ships.html', listEntries=listEntries, listType=listType)
+    
+@app.route('/monopoly', methods=['GET','POST'])
+def monopolyPage():
+    
+    #if a game simulation has been requested
+    if request.method == 'POST':
+        numGames=request.form['numGames']
+        
+        #print(numGames)
+        
+        gameStats = projects.monopoly(numGames)
+        
+        #print(gameStats)
+        
+        revenueList = []
+        
+        for entry in gameStats:
+            revenueList.append(entry['Avg_Revenue'])
+            
+        minRev = min(revenueList)
+        maxRev = max(revenueList)
+        
+        return render_template('monopoly.html', gameStats = gameStats, minRev = minRev, maxRev = maxRev)
+    
+    return render_template('monopoly.html')

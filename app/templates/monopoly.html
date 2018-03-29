@@ -1,0 +1,167 @@
+<!-- index.html-->
+
+{% extends "base.html" %}
+{% block title %}Monopoly{% endblock %}
+{% block body %}
+
+<style>
+    .boardSquare{
+        border: 1px solid grey;
+        min-height:90px;
+        padding-left:1px;
+    }
+    @media (max-width: 770px){
+        #gameboard{
+            display:none;
+        }
+    }
+</style>
+
+<div class="jumbotron">
+  <h1>Monopoly</h1>
+  <p class="lead">A monopoly game simulator</p>
+</div>
+
+<form action="" method="post" role="form">
+<div class="form-group">
+  <label for="numGames">How many games would you like to simulate?</label>
+  <input type="text" class="form-control" id="numGames" name="numGames">
+</div>
+<button type="submit" class="btn btn-success">Simulate</button>
+</form>
+
+<div class="container">
+    {% if gameStats %}
+    
+        <script>
+        var minRev = parseInt("{{ minRev }}");
+        var maxRev = parseInt("{{ maxRev }}");
+        console.log(minRev)
+        console.log(maxRev*0.25)
+        </script>
+        
+        <h2>Gameboard</h2><p>A visualization of results for the simulation of monopoly games</p>
+        
+        <div id="gamebaord">
+        <div class="row">
+            <div id="21" class="boardSquare col-sm-1"></div>
+            <div id="22" class="boardSquare col-sm-1"></div>
+            <div id="23" class="boardSquare col-sm-1"></div>
+            <div id="24" class="boardSquare col-sm-1"></div>
+            <div id="25" class="boardSquare col-sm-1"></div>
+            <div id="26" class="boardSquare col-sm-1"></div>
+            <div id="27" class="boardSquare col-sm-1"></div>
+            <div id="28" class="boardSquare col-sm-1"></div>
+            <div id="29" class="boardSquare col-sm-1"></div>
+            <div id="30" class="boardSquare col-sm-1"></div>
+            <div id="31" class="boardSquare col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="20" class="boardSquare col-sm-1"></div>
+            <div id="32" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="19" class="boardSquare col-sm-1"></div>
+            <div id="33" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="18" class="boardSquare col-sm-1"></div>
+            <div id="34" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="17" class="boardSquare col-sm-1"></div>
+            <div id="35" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="16" class="boardSquare col-sm-1"></div>
+            <div id="36" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="15" class="boardSquare col-sm-1"></div>
+            <div id="37" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="14" class="boardSquare col-sm-1"></div>
+            <div id="38" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="13" class="boardSquare col-sm-1"></div>
+            <div id="39" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="12" class="boardSquare col-sm-1"></div>
+            <div id="40" class="boardSquare col-sm-offset-9 col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div id="11" class="boardSquare col-sm-1"></div>
+            <div id="10" class="boardSquare col-sm-1"></div>
+            <div id="9" class="boardSquare col-sm-1"></div>
+            <div id="8" class="boardSquare col-sm-1"></div>
+            <div id="7" class="boardSquare col-sm-1"></div>
+            <div id="6" class="boardSquare col-sm-1"></div>
+            <div id="5" class="boardSquare col-sm-1"></div>
+            <div id="4" class="boardSquare col-sm-1"></div>
+            <div id="3" class="boardSquare col-sm-1"></div>
+            <div id="2" class="boardSquare col-sm-1"></div>
+            <div id="1" class="boardSquare col-sm-1"></div>
+            
+        </div>
+        
+            
+        {% for entry in gameStats %}
+            <script>
+                
+                var temp = document.getElementById("{{ entry['Position'] }}");
+                temp.innerHTML = "{{ entry['Property'] }}" + " M{{ entry['Avg_Revenue'] }}"
+                //console.log('{{ gameStats }}');
+                
+                tempRev = parseInt("{{ entry['Avg_Revenue'] }}")
+                if ( tempRev > (maxRev*0.75)){
+                    temp.style.backgroundColor = "green";
+                }
+                else if ( tempRev > (maxRev*0.5)){
+                    temp.style.backgroundColor = "lightgreen";
+                }
+                else if ( tempRev > (maxRev*0.25)){
+                    temp.style.backgroundColor = "lightcoral";
+                }
+                else if ( tempRev >= minRev){
+                    temp.style.backgroundColor = "red";
+                }
+            </script>
+            
+            
+        {% endfor %}
+        </div>
+    
+    
+        <h2>List of Stats</h2><p>A list of results for the simulation of monopoly games</p>
+  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Position</th>
+                    <th>Avg_Revenue</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entry in gameStats %}
+            
+            
+                <tr>
+                    <td>{{ entry['Property'] }}</td>
+                    <td>{{ entry['Position'] }}</td>
+                    <td>{{ entry['Avg_Revenue'] }}</td>
+                    <td>{{ entry['Percentage'] }}</td>
+                </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+  
+  {% endif %}  
+</div>
+
+{% endblock %}

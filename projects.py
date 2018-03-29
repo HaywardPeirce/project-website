@@ -2,10 +2,13 @@ import os, sys, imp
 
 #sys.path.append('/home/ubuntu/workspace/random_code')
 sys.path.append('../random_code')
+sys.path.append('../monopoly-sim')
 
 from collatzConjecture import calculateCollatz
 
 from fizzbuzz import selectMethod
+
+from monopoly import calculateGames
 
 #from hoffmanCoding import encode
 
@@ -23,8 +26,11 @@ def collatz(limit):
     
     return calculateCollatz(limit)
     
-def hoffman(string):
-    return encode(string)
+# def hoffman(string):
+#     return encode(string)
     
 def fizzbuzz(method, limit):
     return selectMethod(method, limit)
+    
+def monopoly(gamesCount):
+    return calculateGames(int(gamesCount))
