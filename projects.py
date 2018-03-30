@@ -2,13 +2,14 @@ import os, sys, imp
 
 #sys.path.append('/home/ubuntu/workspace/random_code')
 sys.path.append('../random_code')
-sys.path.append('../monopoly-sim')
+#sys.path.append('../monopoly-sim')
 
 from collatzConjecture import calculateCollatz
 
 from fizzbuzz import selectMethod
 
-from monopoly import calculateGames
+from monopoly_sim.monopoly import calculateGames
+#import monopoly.calculateGames from calculateGames
 
 #from hoffmanCoding import encode
 
